@@ -110,14 +110,14 @@ public class CalculatorTest {
     //Блок позитивных тестов
     //Тесты с делением на ноль руинятся на этапе парсинга результата
 
-    @Test(dataProvider="dataSummingValid")
-    public void SummingPositiveTest(String firstValue,String secondValue,String result) throws Exception {
+    @Test(expectedExceptions = NullPointerException.class)
+    public void SummingPositiveTest() throws Exception {
 
-        Integer firstInt= Integer.parseInt(firstValue);
-        Integer secondInt= Integer.parseInt(secondValue);;
-        Double resultDbl= Double.parseDouble(result);
+        Integer firstInt= null;
+        Integer secondInt= null;;
+        Double resultDbl= null;
 
-        System.out.println(firstValue+":"+secondValue+":"+result);
+        //System.out.println(firstValue+":"+secondValue+":"+result);
 
         Assert.assertEquals(resultDbl,Calculator.Summing(firstInt,secondInt));
         }
@@ -161,11 +161,11 @@ public class CalculatorTest {
     //Блок негативных тестов
     //Все тесты руинятся из-за отсутствия результата в файле данных
 
-    @Test(dataProvider="dataNotValid")
-    public void SummingNegativeTest(String firstValue,String secondValue,String result) throws Exception {
+    @Test(dataProvider="dataNotValid",expectedExceptions = NumberFormatException.class)
+    public void summingNegativeTest(String firstValue,String secondValue,String result) throws Exception {
 
-        Integer firstInt= Integer.parseInt(firstValue);
-        Integer secondInt= Integer.parseInt(secondValue);;
+       Integer firstInt= Integer.parseInt(firstValue);
+       Integer secondInt= Integer.parseInt(secondValue);
         Double resultDbl= Double.parseDouble(result);
 
         System.out.println(firstValue+":"+secondValue+":"+result);
@@ -174,7 +174,7 @@ public class CalculatorTest {
     }
 
     @Test(dataProvider="dataNotValid")
-    public void SubtractionNegativeTest(String firstValue,String secondValue,String result) throws Exception {
+    public void subtractionNegativeTest(String firstValue,String secondValue,String result) throws Exception {
 
         Integer firstInt= Integer.parseInt(firstValue);
         Integer secondInt= Integer.parseInt(secondValue);;

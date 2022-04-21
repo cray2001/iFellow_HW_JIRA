@@ -1,4 +1,4 @@
-import com.sun.org.apache.xpath.internal.operations.Div;
+//import com.sun.org.apache.xpath.internal.operations.Div;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,7 +47,7 @@ public class Calculator {
     }
 
     public static Double Summing(Integer a, Integer b) {
-        return Double.valueOf(a*1.0+b);
+        return a * 1.0 + b;
     }
 
     public static Double Subtraction(Integer a, Integer b) {
